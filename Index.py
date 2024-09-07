@@ -3,18 +3,12 @@ from tkinter import *
 from tkinter import messagebox
 
 from tkinter import ttk
+import sqlite3
+
+
 
 import Databaser
 
-import sqlite3
-
-conn = sqlite3.connect('DBappAlunos2.db')
-cursor = conn.cursor()
-
-cursor.execute("""
-ALTER TABLE Users ADD COLUMN CPF TEXT
-""")
-conn.commit()
 
 
 
@@ -150,12 +144,13 @@ def Register():
 
         Databaser.cursor.execute("""
 
-        INSERT INTO Users(Name , Email, User, Password, CPF
+        INSERT INTO Users(Name , Email, User, Senha, CPF
 
 ) VALUES(?,?,?,?,?)
 
         """,(Name, Email, User, Senha, CPF))
         (sqlite3.connect('DBappAlunos2.db')).commit()
+        Databaser.conn.commit()
 
         messagebox.showinfo(title="Register Info", message="Registrado com Sucesso")
 
@@ -183,13 +178,15 @@ def Register():
 
         #Voltando para a pagina trasendo os Botões novamente
 
-        LoginButton.place(x=24000)
+        LoginButton.place(x=145)
 
         RegisterButton.place(x=5000)
 
         CPFEntry.place(x=5000)
 
         CPFLabel.place(x=5000)
+
+        Back.place(x=5000)
          
 
 

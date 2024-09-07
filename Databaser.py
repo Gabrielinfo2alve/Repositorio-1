@@ -11,7 +11,7 @@ cursor = conn.cursor()
 def criar_tabela():
     cursor.execute("""
 
-   CREATE TABLE IF NOT EXISTS Tabeladeusuarios(
+   CREATE TABLE IF NOT EXISTS Users(
     Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
     Email TEXT NOT NULL,
@@ -28,7 +28,7 @@ def criar_tabela():
 def adicionar_cpf():
    try:
      cursor.execute("""
-             ALTER TABLE Tabeladeusuarios ADD COLUMN CPF TEXT
+             ALTER TABLE Users ADD COLUMN CPF TEXT
         """)
      conn.commit()
    except sqlite3.OperationalError:
